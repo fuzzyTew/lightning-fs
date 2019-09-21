@@ -15,5 +15,6 @@ function Err(name) {
 const EEXIST = Err("EEXIST");
 const ENOENT = Err("ENOENT");
 const ENOTEMPTY = Err("ENOTEMPTY");
+const EISDIR = Err("EISDIR");
 
-module.exports = { EEXIST, ENOENT, ENOTEMPTY };
+module.exports = { EEXIST, ENOENT, ENOTEMPTY, EISDIR };
