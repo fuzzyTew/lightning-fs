@@ -58,6 +58,16 @@ describe("http fallback", () => {
         done();
       });
     });
+    it("make a symlink and read file /a.txt through it", done => {
+      fs.symlink("/a.txt", "/0/symlink.txt", (err) => {
+        expect(err).toBe(null);
+        fs.readFile("/0/symlink.txt", 'utf8', (err, data) => {
+          expect(err).toBe(null);
+          expect(data).toEqual('Hello from "a"');
+          done();
+        });
+      });
+    });
   });
 
   describe("writeFile", () => {
@@ -88,6 +98,7 @@ describe("http fallback", () => {
       });
     });
   });
+
   describe("backFile", () => {
     it("backing a nonexistant file throws", done => {
       fs.backFile("/backFile/non-existant.txt", (err, data) => {
